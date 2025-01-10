@@ -1,5 +1,4 @@
-FROM debian:jessie-slim
-MAINTAINER Dietrich Rordorf <dr@ediqo.com>
+FROM debian:bookworm-slim
 
 USER root
 
@@ -8,7 +7,7 @@ COPY ./assets /usr/local
 
 # install antivirus and dependencies, get the latest clamav and maldet signatures
 RUN apt-get update && \
-    apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools supervisor host tar wget chkconfig && \
+    apt-get install -y apt-utils clamav clamav-daemon curl inotify-tools supervisor host tar wget && \
     mkdir -p /var/log/supervisor && \
     mkdir -p /var/log/cron && \
     cd /usr/local/ && chmod +x *.sh && sync && \
